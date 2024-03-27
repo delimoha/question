@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0e9a4d;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .container {
+            width: 90%; /* Adjusted width for smaller screens */
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        /* Media query for smaller screens */
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 100%; /* Full width on smaller screens */
+                padding: 10px;
+            }
+            .buttons {
+                flex-direction: column; /* Stack buttons vertically on smaller screens */
+            }
+            .button {
+                margin: 10px 0; /* Add margin between buttons */
+            }
+        }
+
+        .popup {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            width: 80%; /* Set width for the pop-up */
+            max-width: 400px; /* Set maximum width for the pop-up */
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+        }
+
+        .closeBtn {
+            background-color: #ddd;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Survey</h1>
+    </header>
+
+    <div class="container">
+        <div class="question">Are you Gay ?</div>
+        <div class="buttons">
+            <button class="button" id="noBtn">No</button>
+            <button class="button" id="yesBtn">Yes</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("noBtn").addEventListener("mouseover", function() {
+            var btn = document.getElementById("noBtn");
+            btn.style.position = "absolute";
+            btn.style.left = Math.floor(Math.random() * 500) + "px";
+            btn.style.top = Math.floor(Math.random() * 500) + "px";
+        });
+
+        document.getElementById("yesBtn").addEventListener("click", function() {
+            var popup = document.createElement("div");
+            popup.classList.add("popup");
+            popup.innerHTML = "<p>Thanks bro</p><button class='closeBtn'>Close</button>";
+            document.body.appendChild(popup);
+            
+            popup.querySelector(".closeBtn").addEventListener("click", function() {
+                document.location.reload(true); // Reload the page
+            });
+        });
+    </script>
+</body>
+</html>
